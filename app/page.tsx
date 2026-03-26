@@ -8,6 +8,17 @@ export default function Home() {
       <div>大頭照</div>
       <div>名字</div>
       <div>簡介</div>
+
+      <div>
+        <div>社群連結</div>
+        <div>社群連結</div>
+        <div>社群連結</div>
+      </div>
+
+      <div>我的興趣</div>
+      <div>設計專案</div>
+      <div>程式專案</div>
+      
       </div>
       </div>
 
