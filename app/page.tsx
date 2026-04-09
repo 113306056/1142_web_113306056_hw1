@@ -189,8 +189,26 @@ export default function Home() {
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1140, margin: "0 auto", padding: "2rem 1.5rem", display: "flex", gap: "1.5rem", minHeight: "100vh", alignItems: "flex-start" }}>
 
         {/* ══ SIDEBAR ══════════════════════════════════════════════════════════ */}
-        <aside className="animate-fade-up" style={{ ...glass, borderRadius: 28, padding: "2rem 1.5rem", width: 300, flexShrink: 0, display: "flex", flexDirection: "column", gap: "1.5rem", animationDelay: "0.1s", position: "sticky", top: "2rem" }}>
-
+        <aside
+  className="animate-fade-up"
+  style={{
+    background: "rgba(255, 255, 255, 0.25)",
+    backdropFilter: "blur(24px)",
+    WebkitBackdropFilter: "blur(24px)",
+    border: "1px solid rgba(255, 255, 255, 0.55)",
+    boxShadow: "0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.8)",
+    borderRadius: 28,
+    padding: "2rem 1.5rem",
+    width: 300,
+    flexShrink: 0,
+    display: "flex",
+    flexDirection: "column" as const,
+    gap: "1.5rem",
+    animationDelay: "0.1s",
+    position: "sticky" as const,
+    top: "2rem",
+  }}
+>
           {/* Avatar + name */}
           <div style={{ textAlign: "center" }}>
             <div style={{ position: "relative", display: "inline-block", marginBottom: "1rem" }}>
