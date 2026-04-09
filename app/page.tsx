@@ -213,7 +213,7 @@ export default function Home() {
           <div style={{ textAlign: "center" }}>
             <div style={{ position: "relative", display: "inline-block", marginBottom: "1rem" }}>
               <div style={{ width: 110, height: 110, borderRadius: "50%", overflow: "hidden", margin: "0 auto", border: "3px solid rgba(255,255,255,0.9)", boxShadow: "0 8px 24px rgba(59,130,246,0.22)" }}>
-                <Image src="/dog01.jpg" alt="吳雨珊" width={110} height={110} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                <Image src="/public/IMG_4342.jpg" alt="吳雨珊" width={110} height={110} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
               </div>
               <div style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "#34d399", border: "2px solid white" }} />
             </div>
