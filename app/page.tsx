@@ -218,7 +218,7 @@ export default function Home() {
               <div style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "#34d399", border: "2px solid white" }} />
             </div>
             <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.9rem", color: "#1e3a5f", letterSpacing: "-0.01em", lineHeight: 1.1 }}>吳雨珊</h1>
-            <p style={{ marginTop: 6, fontSize: "0.78rem", color: "#5a8abf", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>NCCU IM · 大二</p>
+            <p style={{ marginTop: 6, fontSize: "0.78rem", color: "#5a8abf", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>NCCU MIS · 大二</p>
           </div>
 
           {/* Divider */}
