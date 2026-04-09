@@ -92,7 +92,7 @@ const glass: React.CSSProperties = {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<"education" | "experience" | "achievements">("education");
+  const [activeSection, setActiveSection] = useState<"education" | "experience" | "achievements" | "projects">("education");
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
 
   return (
@@ -170,10 +170,10 @@ export default function Home() {
       {/* ── Background blobs ── */}
       <div style={{ position: "fixed", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
         {[
-          { w: 500, h: 500, top: "-10%", left: "-8%",  color: "rgba(147,210,255,0.35)", delay: "0s"   },
-          { w: 400, h: 400, top: "50%",  left: "70%",  color: "rgba(186,230,255,0.3)",  delay: "2s"   },
-          { w: 350, h: 350, top: "75%",  left: "10%",  color: "rgba(167,220,255,0.28)", delay: "4s"   },
-          { w: 300, h: 300, top: "20%",  left: "55%",  color: "rgba(219,243,255,0.3)",  delay: "1.5s" },
+          { w: 500, h: 500, top: "-10%", left: "-8%", color: "rgba(147,210,255,0.35)", delay: "0s" },
+          { w: 400, h: 400, top: "50%", left: "70%", color: "rgba(186,230,255,0.3)", delay: "2s" },
+          { w: 350, h: 350, top: "75%", left: "10%", color: "rgba(167,220,255,0.28)", delay: "4s" },
+          { w: 300, h: 300, top: "20%", left: "55%", color: "rgba(219,243,255,0.3)", delay: "1.5s" },
         ].map((b, i) => (
           <div key={i} style={{
             position: "absolute", borderRadius: "50%",
@@ -190,25 +190,25 @@ export default function Home() {
 
         {/* ══ SIDEBAR ══════════════════════════════════════════════════════════ */}
         <aside
-  className="animate-fade-up"
-  style={{
-    background: "rgba(255, 255, 255, 0.25)",
-    backdropFilter: "blur(24px)",
-    WebkitBackdropFilter: "blur(24px)",
-    border: "1px solid rgba(255, 255, 255, 0.55)",
-    boxShadow: "0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.8)",
-    borderRadius: 28,
-    padding: "2rem 1.5rem",
-    width: 300,
-    flexShrink: 0,
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "1.5rem",
-    animationDelay: "0.1s",
-    position: "sticky" as const,
-    top: "2rem",
-  }}
->
+          className="animate-fade-up"
+          style={{
+            background: "rgba(255, 255, 255, 0.25)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            border: "1px solid rgba(255, 255, 255, 0.55)",
+            boxShadow: "0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.8)",
+            borderRadius: 28,
+            padding: "2rem 1.5rem",
+            width: 300,
+            flexShrink: 0,
+            display: "flex",
+            flexDirection: "column" as const,
+            gap: "1.5rem",
+            animationDelay: "0.1s",
+            position: "sticky" as const,
+            top: "2rem",
+          }}
+        >
           {/* Avatar + name */}
           <div style={{ textAlign: "center" }}>
             <div style={{ position: "relative", display: "inline-block", marginBottom: "1rem" }}>
@@ -258,9 +258,9 @@ export default function Home() {
           {/* Social links */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
             {[
-              { icon: <MailIcon />,     href: "mailto:wuyushan@example.com", label: "Mail"     },
-              { icon: <GithubIcon />,   href: "https://github.com",          label: "GitHub"   },
-              { icon: <LinkedinIcon />, href: "https://linkedin.com",        label: "LinkedIn" },
+              { icon: <MailIcon />, href: "mailto:wuyushan@example.com", label: "Mail" },
+              { icon: <GithubIcon />, href: "https://github.com", label: "GitHub" },
+              { icon: <LinkedinIcon />, href: "https://linkedin.com", label: "LinkedIn" },
             ].map(({ icon, href, label }) => (
               <Link key={label} href={href} title={label} className="social-btn" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, borderRadius: 12, background: "rgba(255,255,255,0.5)", color: "#4a7fbf", border: "1px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
                 {icon}
@@ -273,8 +273,8 @@ export default function Home() {
 
           {/* Nav */}
           <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {(["education", "experience", "achievements"] as const).map((sec) => {
-              const labels: Record<string, string> = { education: "學歷", experience: "經歷", achievements: "獎項競賽" };
+            {(["education", "experience", "achievements", "projects"] as const).map((sec) => {
+              const labels: Record<string, string> = { education: "學歷", experience: "工作經歷", achievements: "獎項競賽", projects: "專案經驗" };
               const active = activeSection === sec;
               return (
                 <button key={sec} className="nav-btn" onClick={() => setActiveSection(sec)} style={{
@@ -375,6 +375,74 @@ export default function Home() {
                   透過商業競賽的參與，增進市場分析、策略提案、消費者洞察與產品概念發想能力。培養如何強化市場定位與目標族群之分析能力，以及在限時條件下進行資料蒐集、競品分析與簡報呈現的實戰經驗。
                 </p>
               </div>
+            </div>
+          )}
+
+          {/* ── PROJECTS ── */}
+          {activeSection === "projects" && (
+            <div className="animate-scale-in" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <SectionLabel>PROJECTS　專案經驗</SectionLabel>
+
+              {[
+                {
+                  title: "專案規劃與執行",
+                  period: "114-1",
+                  tag: "課程專案",
+                  color: "#3b82f6",
+                  desc: "上學期課程中共執行 8 份專案及報告，培養在多條線路同時進行的狀況下掌控進度、確保每件專案順利完成的專案管理能力。",
+                  tools: ["專案規劃", "時程管理", "報告撰寫"],
+                },
+                {
+                  title: "WEB 設計課程助教",
+                  period: "114-2",
+                  tag: "教學協作",
+                  color: "#06b6d4",
+                  desc: "擔任網頁設計課程助教，協助授課教師進行課堂支援，強化自身對技術知識的系統性理解，並磨練溝通表達能力。",
+                  tools: ["HTML / CSS", "課堂輔助", "技術溝通"],
+                },
+                {
+                  title: "創客松活動籌辦",
+                  period: "2025",
+                  tag: "活動企劃",
+                  color: "#8b5cf6",
+                  desc: "於政大創業聯會統籌 Hackathon 等創新創業相關活動，負責活動流程規劃、聯繫講師與評審資源，協調團隊與主辦方溝通。",
+                  tools: ["活動策劃", "資源協調", "團隊溝通"],
+                },
+                {
+                  title: "系學會社群經營",
+                  period: "2025–",
+                  tag: "品牌行銷",
+                  color: "#10b981",
+                  desc: "統籌系學會對外公關事務，負責社群媒體內容規劃、對外形象定位及跨系學會合作洽談，維繫師長與夥伴的長期關係。",
+                  tools: ["社群內容", "品牌定位", "跨部門協作"],
+                },
+              ].map((proj, i) => (
+                <div key={i} className="exp-card animate-fade-up" style={{
+                  background: "rgba(255,255,255,0.45)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255,255,255,0.7)",
+                  boxShadow: "0 8px 32px rgba(59,130,246,0.10), 0 1px 0 rgba(255,255,255,0.8) inset",
+                  borderRadius: 20,
+                  padding: "1.5rem",
+                  borderLeft: `4px solid ${proj.color}`,
+                  animationDelay: `${i * 0.1}s`,
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
+                    <h3 style={{ fontWeight: 700, color: "#1e3a5f", fontSize: "1rem" }}>{proj.title}</h3>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                      <span style={{ fontSize: "0.72rem", padding: "3px 10px", borderRadius: 20, background: `${proj.color}18`, color: proj.color, border: `1px solid ${proj.color}30` }}>{proj.tag}</span>
+                      <span style={{ fontSize: "0.78rem", color: "#93c5e8", fontWeight: 500 }}>{proj.period}</span>
+                    </div>
+                  </div>
+                  <p style={{ fontSize: "0.84rem", color: "#4a7abf", lineHeight: 1.85, marginBottom: 14 }}>{proj.desc}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {proj.tools.map((t) => (
+                      <span key={t} style={{ fontSize: "0.7rem", padding: "3px 10px", borderRadius: 20, background: "rgba(59,130,246,0.08)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)" }}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 
