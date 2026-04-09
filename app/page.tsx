@@ -213,7 +213,7 @@ export default function Home() {
           <div style={{ textAlign: "center" }}>
             <div style={{ position: "relative", display: "inline-block", marginBottom: "1rem" }}>
               <div style={{ width: 110, height: 110, borderRadius: "50%", overflow: "hidden", margin: "0 auto", border: "3px solid rgba(255,255,255,0.9)", boxShadow: "0 8px 24px rgba(59,130,246,0.22)" }}>
-                <Image src="/public/IMG_4342.jpg" alt="吳雨珊" width={110} height={110} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                <Image src="/IMG_4342.jpg" alt="吳雨珊" width={110} height={110} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
               </div>
               <div style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "#34d399", border: "2px solid white" }} />
             </div>
@@ -227,7 +227,7 @@ export default function Home() {
           {/* About me */}
           <div>
             <p style={{ fontSize: "0.8rem", color: "#3a6a9a", lineHeight: 1.8, letterSpacing: "0.01em" }}>
-              資管系二年級，雙主修數位內容科技學程，並修讀金融科技專長學程。習慣以全局視角思考資源調度與人員分工，培養從資料分析到簡報提案的完整專案能力。
+              資管系二年級。
             </p>
           </div>
 
