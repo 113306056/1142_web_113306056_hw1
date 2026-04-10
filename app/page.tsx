@@ -394,20 +394,13 @@ export default function Home() {
                   link: "https://akaswap.com/akaobj/27119",
                   preview: "/summerDaydream_GIF.gif",
                 },
+               
                 {
-                  title: "WEB 設計課程助教",
-                  period: "114-2",
-                  tag: "教學協作",
-                  color: "#06b6d4",
-                  desc: "擔任網頁設計課程助教，協助授課教師進行課堂支援，強化自身對技術知識的系統性理解，並磨練溝通表達能力。",
-                  tools: ["HTML / CSS", "課堂輔助", "技術溝通"],
-                },
-                {
-                  title: "創客松活動籌辦",
+                  title: "2025 政大創客松 NCCU Maker 活動籌辦",
                   period: "2025",
                   tag: "活動企劃",
                   color: "#8b5cf6",
-                  desc: "於政大創業聯會籌辦創客松等創新創業相關活動，負責活動流程規劃、聯繫講師與評審資源，與團隊、主辦方溝通。",
+                  desc: "於政大創業聯會籌辦創客松，負責活動流程規劃、聯繫講師與評審資源，與團隊、主辦方溝通。",
                   tools: ["活動策劃", "資源協調", "團隊溝通"],
                 },
                 {
