@@ -394,7 +394,7 @@ export default function Home() {
                   link: "https://akaswap.com/akaobj/27119",
                   preview: "/summerDaydream_GIF.gif",
                 },
-               
+        
                 {
                   title: "2025 政大創客松 NCCU Maker 活動籌辦",
                   period: "2025",
@@ -411,7 +411,10 @@ export default function Home() {
                   desc: "統籌系學會對外公關事務，負責社群媒體內容規劃、對外形象定位及跨系學會合作洽談，維繫師長與夥伴的長期關係。",
                   tools: ["社群內容", "品牌定位", "跨部門協作"],
                 },
-              ].map((proj, i) => (
+              ].map((proj: {
+                title: string; period: string; tag: string; color: string;
+                desc: string; tools: string[]; link?: string; preview?: string;
+              }, i) => (
                 <div key={i} className="exp-card animate-fade-up" style={{
                   background: "rgba(255,255,255,0.45)",
                   backdropFilter: "blur(20px)",
@@ -419,10 +422,58 @@ export default function Home() {
                   border: "1px solid rgba(255,255,255,0.7)",
                   boxShadow: "0 8px 32px rgba(59,130,246,0.10), 0 1px 0 rgba(255,255,255,0.8) inset",
                   borderRadius: 20,
-                  padding: "1.5rem",
+                  overflow: "hidden",
                   borderLeft: `4px solid ${proj.color}`,
                   animationDelay: `${i * 0.1}s`,
                 }}>
+                  {proj.preview && (
+                    <div style={{ position: "relative", width: "100%", height: 200, background: "rgba(59,130,246,0.06)", overflow: "hidden" }}>
+                      <img src={proj.preview} alt={proj.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(220,240,255,0.6) 100%)" }} />
+                      {proj.link && (
+                        <a href={proj.link} target="_blank" rel="noopener noreferrer" style={{
+                          position: "absolute", top: 12, right: 12,
+                          background: "rgba(255,255,255,0.88)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)",
+                          border: "1px solid rgba(59,130,246,0.3)", borderRadius: 10, padding: "5px 13px",
+                          fontSize: "0.72rem", color: "#2563eb", fontWeight: 600, textDecoration: "none",
+                          display: "flex", alignItems: "center", gap: 5,
+                        }}>
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                          </svg>
+                          akaSwap 查看
+                        </a>
+                      )}
+                    </div>
+                  )}
+                  <div style={{ padding: "1.25rem 1.5rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
+                      <h3 style={{ fontWeight: 700, color: "#1e3a5f", fontSize: "1rem" }}>{proj.title}</h3>
+                      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                        <span style={{ fontSize: "0.72rem", padding: "3px 10px", borderRadius: 20, background: `${proj.color}18`, color: proj.color, border: `1px solid ${proj.color}30` }}>{proj.tag}</span>
+                        <span style={{ fontSize: "0.78rem", color: "#93c5e8", fontWeight: 500 }}>{proj.period}</span>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: "0.84rem", color: "#4a7abf", lineHeight: 1.85, marginBottom: 14 }}>{proj.desc}</p>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+                      {proj.tools.map((t) => (
+                        <span key={t} style={{ fontSize: "0.7rem", padding: "3px 10px", borderRadius: 20, background: "rgba(59,130,246,0.08)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)" }}>{t}</span>
+                      ))}
+                      {proj.link && !proj.preview && (
+                        <a href={proj.link} target="_blank" rel="noopener noreferrer" style={{
+                          marginLeft: "auto", fontSize: "0.72rem", color: "#2563eb", fontWeight: 600, textDecoration: "none",
+                          display: "flex", alignItems: "center", gap: 4,
+                          background: "rgba(37,99,235,0.08)", padding: "3px 12px",
+                          borderRadius: 20, border: "1px solid rgba(37,99,235,0.2)",
+                        }}>
+                          akaswap 連結
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
                     <h3 style={{ fontWeight: 700, color: "#1e3a5f", fontSize: "1rem" }}>{proj.title}</h3>
                     <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
