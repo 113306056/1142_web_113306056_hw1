@@ -392,7 +392,7 @@ export default function Home() {
                   desc: "進行生成式藝術設計，撰寫成區塊鏈見習週記，成功將作品上鏈至 akaSwap。",
                   tools: ["生成式藝術", "區塊鏈", "NFT 上鏈"],
                   link: "https://akaswap.com/akaobj/27119",
-                  preview: "/blockchain-art.png",
+                  preview: "/summerDaydream_GIF.gif",
                 },
                 {
                   title: "WEB 設計課程助教",
