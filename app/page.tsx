@@ -389,8 +389,10 @@ export default function Home() {
                   period: "114-1",
                   tag: "課程專案",
                   color: "#3b82f6",
-                  desc: "進行生成式藝術設計，撰寫成區塊鏈見習週記，成功將作品上鏈至akaswap",
-                  tools: ["專案規劃", "時程管理", "報告撰寫"],
+                  desc: "進行生成式藝術設計，撰寫成區塊鏈見習週記，成功將作品上鏈至 akaSwap。",
+                  tools: ["生成式藝術", "區塊鏈", "NFT 上鏈"],
+                  link: "https://akaswap.com/akaobj/27119",
+                  preview: "/blockchain-art.png",
                 },
                 {
                   title: "WEB 設計課程助教",
