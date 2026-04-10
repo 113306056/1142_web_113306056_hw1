@@ -34,7 +34,7 @@ const education = [
   { degree: "錄取 金融科技專長學程", detail: "進修中", icon: "💳" },
 ];
 
-const courses = ["資料結構", "統計學", "管理科學", "資料庫結構", "程式設計"];
+const courses = ["資料結構", "統計學", "管理科學", "資料庫管理", "程式設計"];
 
 const skills = [
   { label: "#活動策劃", color: "#3b82f6" },
@@ -47,22 +47,22 @@ const experiences = [
   {
     title: "資管系系學會　公關長",
     period: "2025 –",
-    desc: "統籌系學會對外公關事務，進行對外形象定位及社群媒體內容規劃與對外合作洽談。維繫與師長、夥伴及其他系學會的長期關係，並在活動中進行跨部門合作，確保活動如期完成。",
+    desc: "統籌系學會對外公關事務，負責對外形象管理及社群媒體內容規劃、對外合作洽談。",
     tag: "社團職務",
     color: "#3b82f6",
   },
   {
     title: "政大創業聯會　活動組 組員",
     period: "2025",
-    desc: "負責籌辦創客松（Hackathon）等創新創業相關活動，統籌活動流程、聯繫講師與評審資源。透過與創業者的密集互動，培養對市場需求的實務理解，磨練在高壓時程下的多工協調能力。",
+    desc: "負責籌辦創客松等創新創業相關活動，統籌活動流程、聯繫講師與評審資源。透過與創業者的密集互動，培養對市場需求的實務理解，磨練在高壓時程下的多工協調能力。",
     tag: "社團職務",
     color: "#06b6d4",
   },
   {
     title: "攝影社 社員",
     period: "2025–",
-    desc: "培養審美",
-    tag: "工作經歷",
+    desc: " ",
+    tag: "社團經歷",
     color: "#8b5cf6",
   },
   {
@@ -78,7 +78,7 @@ const achievements = [
   { title: "114-1 資管系書卷獎", detail: "專案規劃、執行", year: "2025", icon: "🏅" },
   { title: "2025 ATCC", detail: "進入第二輪複賽", year: "2025", icon: "🏆" },
   { title: "2025 玉山商業競賽", detail: "參賽", year: "2025", icon: "⭐" },
-  { title: "2026 L'ORÉAL BRAINSTORM", detail: "參賽", year: "2026", icon: "💡" },
+  { title: "2026 L'ORÉAL BRANDSTORM", detail: "參賽", year: "2026", icon: "💡" },
 ];
 
 // ── Glass Card helper ─────────────────────────────────────────────────────────
@@ -300,7 +300,7 @@ export default function Home() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
               <div>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 4 }}>DIGITAL RESUME</p>
-                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>歡迎認識我 ✦</h2>
+                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>know about me ✦</h2>
               </div>
               <div style={{ display: "flex", gap: 10 }}>
                 {["🎓 學業", "💼 實習", "🤝 合作"].map((t) => (
@@ -385,11 +385,11 @@ export default function Home() {
 
               {[
                 {
-                  title: "專案規劃與執行",
+                  title: "區塊鏈應用",
                   period: "114-1",
                   tag: "課程專案",
                   color: "#3b82f6",
-                  desc: "上學期課程中共執行 8 份專案及報告，培養在多條線路同時進行的狀況下掌控進度、確保每件專案順利完成的專案管理能力。",
+                  desc: "進行生成式藝術設計，撰寫成區塊鏈見習週記，成功將作品上鏈至akaswap",
                   tools: ["專案規劃", "時程管理", "報告撰寫"],
                 },
                 {
