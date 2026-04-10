@@ -274,7 +274,7 @@ export default function Home() {
           {/* Nav */}
           <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {(["education", "experience", "achievements", "projects"] as const).map((sec) => {
-              const labels: Record<string, string> = { education: "學歷", experience: "工作經歷", achievements: "獎項競賽", projects: "專案經驗" };
+              const labels: Record<string, string> = { education: "課業學習", experience: "社團經歷", achievements: "獎項競賽", projects: "專案經驗" };
               const active = activeSection === sec;
               return (
                 <button key={sec} className="nav-btn" onClick={() => setActiveSection(sec)} style={{
@@ -300,7 +300,7 @@ export default function Home() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
               <div>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 4 }}>DIGITAL RESUME</p>
-                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>know about me ✦</h2>
+                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>Know about me ✦</h2>
               </div>
               <div style={{ display: "flex", gap: 10 }}>
                 {["🎓 學業", "💼 實習", "🤝 合作"].map((t) => (
@@ -337,7 +337,7 @@ export default function Home() {
           {/* ── EXPERIENCE ── */}
           {activeSection === "experience" && (
             <div className="animate-scale-in" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <SectionLabel>EXPERIENCE　工作經歷</SectionLabel>
+              <SectionLabel>EXPERIENCE　社團經歷</SectionLabel>
               {experiences.map((exp, i) => (
                 <div key={i} className="exp-card animate-fade-up" onMouseEnter={() => setHoveredExp(i)} onMouseLeave={() => setHoveredExp(null)} style={{ ...glass, borderRadius: 20, padding: "1.5rem", borderLeft: `4px solid ${exp.color}`, animationDelay: `${i * 0.1}s`, cursor: "default" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
@@ -372,7 +372,7 @@ export default function Home() {
               <div className="exp-card animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1.5rem", animationDelay: "0.45s" }}>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>競賽收穫</p>
                 <p style={{ fontSize: "0.86rem", color: "#2d5a8a", lineHeight: 2 }}>
-                  透過商業競賽的參與，增進市場分析、策略提案、消費者洞察與產品概念發想能力。培養如何強化市場定位與目標族群之分析能力，以及在限時條件下進行資料蒐集、競品分析與簡報呈現的實戰經驗。
+                  透過競賽參與，增進市場分析、策略提案、消費者洞察與產品概念發想能力。培養如何強化市場定位與目標族群之分析能力，以及在限時條件下進行資料蒐集、競品分析與簡報呈現的實戰經驗。
                 </p>
               </div>
             </div>
@@ -405,7 +405,7 @@ export default function Home() {
                   period: "2025",
                   tag: "活動企劃",
                   color: "#8b5cf6",
-                  desc: "於政大創業聯會統籌 Hackathon 等創新創業相關活動，負責活動流程規劃、聯繫講師與評審資源，協調團隊與主辦方溝通。",
+                  desc: "於政大創業聯會籌辦創客松等創新創業相關活動，負責活動流程規劃、聯繫講師與評審資源，與團隊、主辦方溝通。",
                   tools: ["活動策劃", "資源協調", "團隊溝通"],
                 },
                 {
@@ -449,7 +449,7 @@ export default function Home() {
           {/* ── Footer ── */}
           <div className="animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "center", animationDelay: "0.5s" }}>
             <p style={{ fontSize: "0.75rem", color: "#93c5e8", letterSpacing: "0.05em" }}>
-              © 2025 吳雨珊 &nbsp;·&nbsp; Built with Next.js &nbsp;·&nbsp; 持續更新中 ✦
+              © 2025 &nbsp;·&nbsp; Built with Next.js &nbsp;·&nbsp; 持續更新中 ✦
             </p>
           </div>
         </main>
