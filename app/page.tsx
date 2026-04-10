@@ -227,7 +227,7 @@ export default function Home() {
           {/* About me */}
           <div>
             <p style={{ fontSize: "0.8rem", color: "#3a6a9a", lineHeight: 1.8, letterSpacing: "0.01em" }}>
-              資管系二年級。
+              資管系二年級。雙主修數位內容科技學士學位學程，並修讀金融科技專長學程。
             </p>
           </div>
 
@@ -258,8 +258,8 @@ export default function Home() {
           {/* Social links */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
             {[
-              { icon: <MailIcon />, href: "mailto:wuyushan@example.com", label: "Mail" },
-              { icon: <GithubIcon />, href: "https://github.com", label: "GitHub" },
+              { icon: <MailIcon />, href: "mailto:sammi0911717@gmail.com", label: "Mail" },
+              { icon: <GithubIcon />, href: "https://github.com/113306056", label: "GitHub" },
               { icon: <LinkedinIcon />, href: "https://linkedin.com", label: "LinkedIn" },
             ].map(({ icon, href, label }) => (
               <Link key={label} href={href} title={label} className="social-btn" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, borderRadius: 12, background: "rgba(255,255,255,0.5)", color: "#4a7fbf", border: "1px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
