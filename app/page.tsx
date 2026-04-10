@@ -474,21 +474,6 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
-                    <h3 style={{ fontWeight: 700, color: "#1e3a5f", fontSize: "1rem" }}>{proj.title}</h3>
-                    <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                      <span style={{ fontSize: "0.72rem", padding: "3px 10px", borderRadius: 20, background: `${proj.color}18`, color: proj.color, border: `1px solid ${proj.color}30` }}>{proj.tag}</span>
-                      <span style={{ fontSize: "0.78rem", color: "#93c5e8", fontWeight: 500 }}>{proj.period}</span>
-                    </div>
-                  </div>
-                  <p style={{ fontSize: "0.84rem", color: "#4a7abf", lineHeight: 1.85, marginBottom: 14 }}>{proj.desc}</p>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                    {proj.tools.map((t) => (
-                      <span key={t} style={{ fontSize: "0.7rem", padding: "3px 10px", borderRadius: 20, background: "rgba(59,130,246,0.08)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)" }}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
           )}
 
