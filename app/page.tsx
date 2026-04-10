@@ -389,7 +389,7 @@ export default function Home() {
                   period: "114-1",
                   tag: "課程專案",
                   color: "#3b82f6",
-                  desc: "進行生成式藝術設計，撰寫成區塊鏈見習週記，成功將作品上鏈至 akaSwap。",
+                  desc: "進行生成式藝術設計，於 Threads 撰寫區塊鏈見習週記，成功將作品上鏈至 akaSwap。",
                   tools: ["生成式藝術", "區塊鏈", "NFT 上鏈"],
                   link: "https://akaswap.com/akaobj/27119",
                   preview: "/summerDaydream_GIF.gif",
