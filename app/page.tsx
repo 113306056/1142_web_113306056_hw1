@@ -260,7 +260,7 @@ export default function Home() {
             {[
               { icon: <MailIcon />, href: "mailto:sammi0911717@gmail.com", label: "Mail" },
               { icon: <GithubIcon />, href: "https://github.com/113306056", label: "GitHub" },
-              { icon: <LinkedinIcon />, href: "https://linkedin.com", label: "LinkedIn" },
+              { icon: <LinkedinIcon />, href: "https://www.linkedin.com/in/yushan-wu-173a66346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", label: "LinkedIn" },
             ].map(({ icon, href, label }) => (
               <Link key={label} href={href} title={label} className="social-btn" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, borderRadius: 12, background: "rgba(255,255,255,0.5)", color: "#4a7fbf", border: "1px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
                 {icon}
