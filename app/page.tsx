@@ -105,7 +105,7 @@ export default function Home() {
 
         body {
           font-family: 'Noto Sans TC', sans-serif;
-          background: linear-gradient(135deg, #dbeeff 0%, #eaf5ff 35%, #6495ED 65%, #87CEFA 100%);
+          background: linear-gradient(135deg, #dbeeff 10%, #eaf5ff 30%, #6495ED 60%, #87CEFA 100%);
           min-height: 100vh;
         }
 
