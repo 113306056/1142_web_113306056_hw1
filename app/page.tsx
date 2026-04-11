@@ -328,7 +328,7 @@ export default function Home() {
               <div className="exp-card animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1.5rem", animationDelay: "0.35s" }}>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>ABOUT ME</p>
                 <p style={{ fontSize: "0.86rem", color: "#2d5a8a", lineHeight: 2, letterSpacing: "0.02em" }}>
-                  修課及參與商業競賽的過程中，培養從資料分析到簡報提案的完整專案能力。進而啟發對數據分析的興趣，希望有機會能進入數據分析社與夥伴們一起學習，建立具組織力與影響力的社團。
+                  學習 java、python、各種前後端工具中......
                 </p>
               </div>
             </div>
