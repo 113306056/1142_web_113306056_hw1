@@ -303,7 +303,7 @@ export default function Home() {
                 <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>Know about me ✦</h2>
               </div>
               <div style={{ display: "flex", gap: 10 }}>
-                {["🎓 學業", "💼 實習", "🤝 合作"].map((t) => (
+                {["學業", "實習", "合作"].map((t) => (
                   <span key={t} style={{ fontSize: "0.75rem", padding: "6px 14px", borderRadius: 20, background: "rgba(59,130,246,0.1)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)", fontWeight: 500 }}>{t}</span>
                 ))}
               </div>
