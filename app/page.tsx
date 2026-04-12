@@ -94,10 +94,10 @@ const glass: React.CSSProperties = {
 export default function Home() {
   const [activeSection, setActiveSection] = useState<"education" | "experience" | "achievements" | "projects">("education");
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
-      {/* ── Global styles ── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
 
@@ -136,44 +136,215 @@ export default function Home() {
         }
         .nav-btn:hover { transform: translateX(4px); }
 
-        .exp-card {
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
+        .exp-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
         .exp-card:hover {
           transform: translateY(-3px);
           box-shadow: 0 16px 40px rgba(59,130,246,0.18), 0 1px 0 rgba(255,255,255,0.8) inset !important;
         }
 
-        .skill-tag {
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          cursor: default;
-        }
-        .skill-tag:hover {
-          transform: translateY(-2px) scale(1.04);
-          box-shadow: 0 6px 18px rgba(59,130,246,0.25);
-        }
+        .skill-tag { transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: default; }
+        .skill-tag:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 6px 18px rgba(59,130,246,0.25); }
 
-        .social-btn {
-          transition: all 0.2s ease;
-          cursor: pointer;
-        }
-        .social-btn:hover {
-          transform: translateY(-2px);
-          background: rgba(59,130,246,0.15) !important;
-        }
+        .social-btn { transition: all 0.2s ease; cursor: pointer; }
+        .social-btn:hover { transform: translateY(-2px); background: rgba(59,130,246,0.15) !important; }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
+
+        /* ── Layout ── */
+        .page-layout {
+          position: relative;
+          z-index: 1;
+          max-width: 1140px;
+          margin: 0 auto;
+          padding: 2rem 1.5rem;
+          display: flex;
+          flex-direction: row;
+          gap: 1.5rem;
+          min-height: 100vh;
+          align-items: flex-start;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+          width: 300px;
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          position: sticky;
+          top: 2rem;
+          background: rgba(255,255,255,0.25);
+          backdropFilter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border: 1px solid rgba(255,255,255,0.55);
+          box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+          border-radius: 28px;
+          padding: 2rem 1.5rem;
+        }
+
+        /* ── Main content ── */
+        .main-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          min-width: 0;
+        }
+
+        /* ── Mobile top bar (hidden on desktop) ── */
+        .mobile-topbar {
+          display: none;
+        }
+
+        /* ── Sidebar nav (mobile: horizontal scroll tabs) ── */
+        .mobile-nav-tabs {
+          display: none;
+        }
+
+        /* ── Achievements grid ── */
+        .achievements-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 1rem;
+        }
+
+        /* ── Header badges ── */
+        .header-badges {
+          display: flex;
+          gap: 10px;
+        }
+
+        /* ════════════════════════════════
+           MOBILE  ≤ 768px
+        ════════════════════════════════ */
+        @media (max-width: 768px) {
+
+          .page-layout {
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
+          }
+
+          /* Hide desktop sidebar entirely */
+          .sidebar {
+            display: none;
+          }
+
+          /* Show mobile top bar */
+          .mobile-topbar {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.35);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 20px rgba(59,130,246,0.12);
+            border-radius: 20px;
+            padding: 1rem 1.25rem;
+            animation: fadeUp 0.5s ease both;
+          }
+
+          .mobile-topbar-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.9);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.2);
+          }
+
+          .mobile-topbar-info {
+            flex: 1;
+            min-width: 0;
+          }
+
+          .mobile-topbar-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: #1e3a5f;
+            line-height: 1.1;
+          }
+
+          .mobile-topbar-sub {
+            font-size: 0.7rem;
+            color: #5a8abf;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-top: 3px;
+          }
+
+          .mobile-topbar-socials {
+            display: flex;
+            gap: 7px;
+          }
+
+          /* Show horizontal tab nav */
+          .mobile-nav-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            animation: fadeUp 0.5s ease both;
+            animation-delay: 0.1s;
+          }
+          .mobile-nav-tabs::-webkit-scrollbar { display: none; }
+
+          .mobile-tab-btn {
+            flex-shrink: 0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+          }
+
+          /* Header card */
+          .header-card-title {
+            font-size: 1.5rem !important;
+          }
+
+          .header-badges {
+            display: none;
+          }
+
+          /* Achievements grid → 2 col on mobile */
+          .achievements-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          /* Nav btn hover no translate on mobile */
+          .nav-btn:hover { transform: none; }
+        }
+
+        /* ── Very small screens ≤ 380px ── */
+        @media (max-width: 380px) {
+          .achievements-grid {
+            grid-template-columns: 1fr;
+          }
+          .mobile-topbar-name {
+            font-size: 1.2rem;
+          }
+        }
       `}</style>
 
       {/* ── Background blobs ── */}
       <div style={{ position: "fixed", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
         {[
-          { w: 500, h: 500, top: "-10%", left: "-8%", color: "rgba(147,210,255,0.35)", delay: "0s" },
-          { w: 400, h: 400, top: "50%", left: "70%", color: "rgba(186,230,255,0.3)", delay: "2s" },
-          { w: 350, h: 350, top: "75%", left: "10%", color: "rgba(167,220,255,0.28)", delay: "4s" },
-          { w: 300, h: 300, top: "20%", left: "55%", color: "rgba(219,243,255,0.3)", delay: "1.5s" },
+          { w: 500, h: 500, top: "-10%", left: "-8%",  color: "rgba(147,210,255,0.35)", delay: "0s"   },
+          { w: 400, h: 400, top: "50%",  left: "70%",  color: "rgba(186,230,255,0.3)",  delay: "2s"   },
+          { w: 350, h: 350, top: "75%",  left: "10%",  color: "rgba(167,220,255,0.28)", delay: "4s"   },
+          { w: 300, h: 300, top: "20%",  left: "55%",  color: "rgba(219,243,255,0.3)",  delay: "1.5s" },
         ].map((b, i) => (
           <div key={i} style={{
             position: "absolute", borderRadius: "50%",
@@ -185,31 +356,10 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ── Layout ── */}
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1140, margin: "0 auto", padding: "2rem 1.5rem", display: "flex", gap: "1.5rem", minHeight: "100vh", alignItems: "flex-start" }}>
+      <div className="page-layout">
 
-        {/* ══ SIDEBAR ══════════════════════════════════════════════════════════ */}
-        <aside
-          className="animate-fade-up"
-          style={{
-            background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            border: "1px solid rgba(255, 255, 255, 0.55)",
-            boxShadow: "0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.8)",
-            borderRadius: 28,
-            padding: "2rem 1.5rem",
-            width: 300,
-            flexShrink: 0,
-            display: "flex",
-            flexDirection: "column" as const,
-            gap: "1.5rem",
-            animationDelay: "0.1s",
-            position: "sticky" as const,
-            top: "2rem",
-          }}
-        >
-          {/* Avatar + name */}
+        {/* ══ DESKTOP SIDEBAR ══ */}
+        <aside className="sidebar animate-fade-up" style={{ animationDelay: "0.1s" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ position: "relative", display: "inline-block", marginBottom: "1rem" }}>
               <div style={{ width: 110, height: 110, borderRadius: "50%", overflow: "hidden", margin: "0 auto", border: "3px solid rgba(255,255,255,0.9)", boxShadow: "0 8px 24px rgba(59,130,246,0.22)" }}>
@@ -221,31 +371,23 @@ export default function Home() {
             <p style={{ marginTop: 6, fontSize: "0.78rem", color: "#5a8abf", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>NCCU MIS · 大二</p>
           </div>
 
-          {/* Divider */}
           <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(59,130,246,0.25), transparent)" }} />
 
-          {/* About me */}
           <div>
             <p style={{ fontSize: "0.8rem", color: "#3a6a9a", lineHeight: 1.8, letterSpacing: "0.01em" }}>
               資管系二年級。雙主修數位內容科技學士學位學程，並修讀金融科技專長學程。
             </p>
           </div>
 
-          {/* Skills */}
           <div>
             <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>SKILLS</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
               {skills.map((s) => (
-                <span key={s.label} className="skill-tag" style={{
-                  fontSize: "0.72rem", fontWeight: 500, padding: "4px 11px", borderRadius: 20,
-                  background: `${s.color}18`, color: s.color,
-                  border: `1px solid ${s.color}40`,
-                }}>{s.label}</span>
+                <span key={s.label} className="skill-tag" style={{ fontSize: "0.72rem", fontWeight: 500, padding: "4px 11px", borderRadius: 20, background: `${s.color}18`, color: s.color, border: `1px solid ${s.color}40` }}>{s.label}</span>
               ))}
             </div>
           </div>
 
-          {/* Courses */}
           <div>
             <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>相關修課</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -255,12 +397,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Social links */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
             {[
-              { icon: <MailIcon />, href: "mailto:sammi0911717@gmail.com", label: "Mail" },
-              { icon: <GithubIcon />, href: "https://github.com/113306056", label: "GitHub" },
-              { icon: <LinkedinIcon />, href: "https://www.linkedin.com/in/yushan-wu-173a66346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", label: "LinkedIn" },
+              { icon: <MailIcon />,     href: "mailto:sammi0911717@gmail.com",  label: "Mail"     },
+              { icon: <GithubIcon />,   href: "https://github.com/113306056",   label: "GitHub"   },
+              { icon: <LinkedinIcon />, href: "https://www.linkedin.com/in/yushan-wu-173a66346", label: "LinkedIn" },
             ].map(({ icon, href, label }) => (
               <Link key={label} href={href} title={label} className="social-btn" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, borderRadius: 12, background: "rgba(255,255,255,0.5)", color: "#4a7fbf", border: "1px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
                 {icon}
@@ -268,10 +409,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Divider */}
           <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(59,130,246,0.25), transparent)" }} />
 
-          {/* Nav */}
           <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {(["education", "experience", "achievements", "projects"] as const).map((sec) => {
               const labels: Record<string, string> = { education: "課業學習", experience: "社團經歷", achievements: "獎項競賽", projects: "專案經驗" };
@@ -292,17 +431,59 @@ export default function Home() {
           </nav>
         </aside>
 
-        {/* ══ MAIN ═════════════════════════════════════════════════════════════ */}
-        <main style={{ flex: 1, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        {/* ══ MAIN ══ */}
+        <main className="main-content">
+
+          {/* ── MOBILE TOP BAR (avatar + name + socials) ── */}
+          <div className="mobile-topbar">
+            <div className="mobile-topbar-avatar">
+              <Image src="/IMG_4342.jpg" alt="吳雨珊" width={56} height={56} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+            </div>
+            <div className="mobile-topbar-info">
+              <div className="mobile-topbar-name">吳雨珊</div>
+              <div className="mobile-topbar-sub">NCCU MIS · 大二</div>
+            </div>
+            <div className="mobile-topbar-socials">
+              {[
+                { icon: <MailIcon />,     href: "mailto:sammi0911717@gmail.com",  label: "Mail"     },
+                { icon: <GithubIcon />,   href: "https://github.com/113306056",   label: "GitHub"   },
+                { icon: <LinkedinIcon />, href: "https://www.linkedin.com/in/yushan-wu-173a66346", label: "LinkedIn" },
+              ].map(({ icon, href, label }) => (
+                <Link key={label} href={href} title={label} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 34, height: 34, borderRadius: 10, background: "rgba(255,255,255,0.55)", color: "#4a7fbf", border: "1px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
+                  {icon}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ── MOBILE NAV TABS ── */}
+          <div className="mobile-nav-tabs" style={{ animationDelay: "0.1s" }}>
+            {(["education", "experience", "achievements", "projects"] as const).map((sec) => {
+              const labels: Record<string, string> = { education: "課業學習", experience: "社團經歷", achievements: "獎項競賽", projects: "專案經驗" };
+              const active = activeSection === sec;
+              return (
+                <button key={sec} className="mobile-tab-btn" onClick={() => setActiveSection(sec)} style={{
+                  background: active ? "rgba(59,130,246,0.18)" : "rgba(255,255,255,0.45)",
+                  color: active ? "#2563eb" : "#5a8abf",
+                  border: active ? "1px solid rgba(59,130,246,0.35)" : "1px solid rgba(255,255,255,0.6)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  fontWeight: active ? 700 : 500,
+                }}>
+                  {labels[sec]}
+                </button>
+              );
+            })}
+          </div>
 
           {/* ── Header card ── */}
-          <div className="animate-fade-up" style={{ ...glass, borderRadius: 24, padding: "1.5rem 2rem", animationDelay: "0.2s" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <div className="animate-fade-up" style={{ ...glass, borderRadius: 24, padding: "1.25rem 1.5rem", animationDelay: "0.2s" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
               <div>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 4 }}>DIGITAL RESUME</p>
-                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>Know about me ✦</h2>
+                <h2 className="header-card-title" style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>Know about me ✦</h2>
               </div>
-              <div style={{ display: "flex", gap: 10 }}>
+              <div className="header-badges">
                 {["學業", "實習", "合作"].map((t) => (
                   <span key={t} style={{ fontSize: "0.75rem", padding: "6px 14px", borderRadius: 20, background: "rgba(59,130,246,0.1)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)", fontWeight: 500 }}>{t}</span>
                 ))}
@@ -323,8 +504,6 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-
-              {/* About me extended */}
               <div className="exp-card animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1.5rem", animationDelay: "0.35s" }}>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>ABOUT ME</p>
                 <p style={{ fontSize: "0.86rem", color: "#2d5a8a", lineHeight: 2, letterSpacing: "0.02em" }}>
@@ -357,7 +536,7 @@ export default function Home() {
           {activeSection === "achievements" && (
             <div className="animate-scale-in" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <SectionLabel>ACHIEVEMENTS　獎項與競賽</SectionLabel>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1rem" }}>
+              <div className="achievements-grid">
                 {achievements.map((a, i) => (
                   <div key={i} className="exp-card animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1.5rem", textAlign: "center", animationDelay: `${i * 0.1}s` }}>
                     <div style={{ fontSize: "2.4rem", marginBottom: 12 }}>{a.icon}</div>
@@ -367,8 +546,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
-              {/* Competition insight */}
               <div className="exp-card animate-fade-up" style={{ ...glass, borderRadius: 20, padding: "1.5rem", animationDelay: "0.45s" }}>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>競賽收穫</p>
                 <p style={{ fontSize: "0.86rem", color: "#2d5a8a", lineHeight: 2 }}>
@@ -382,7 +559,6 @@ export default function Home() {
           {activeSection === "projects" && (
             <div className="animate-scale-in" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <SectionLabel>PROJECTS　專案經驗</SectionLabel>
-
               {[
                 {
                   title: "區塊鏈應用",
@@ -394,7 +570,6 @@ export default function Home() {
                   link: "https://akaswap.com/akaobj/27119",
                   preview: "/summerDaydream_GIF.gif",
                 },
-        
                 {
                   title: "2025 政大創客松 NCCU Maker 活動籌辦",
                   period: "2025",
@@ -489,7 +664,6 @@ export default function Home() {
   );
 }
 
-// ── Section label helper ──────────────────────────────────────────────────────
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
