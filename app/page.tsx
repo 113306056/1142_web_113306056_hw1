@@ -482,7 +482,7 @@ export default function Home() {
               <div>
                 <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#93c5e8", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 4 }}>DIGITAL RESUME</p>
                 <h2 className="header-card-title" style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>Know about me ✦</h2>
-                <h3 className="header-card-title" style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>新手 | 在動物園大學持續修練中、、、 ✦</h3>
+                <h1 className="header-card-title" style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.5rem", color: "#1e3a5f", letterSpacing: "-0.02em" }}>新手 | 在動物園大學持續修練中、、、 ✦</h1>
               </div>
               <div className="header-badges">
                 {["學業", "實習", "合作"].map((t) => (
